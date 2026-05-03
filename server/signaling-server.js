@@ -106,8 +106,20 @@ const server = createServer(async (request, response) => {
     return;
   }
 
-  response.writeHead(200, { ...corsHeaders, 'content-type': 'text/plain' });
-  response.end('Aao Milo signaling server');
+  response.writeHead(200, { ...corsHeaders, 'content-type': 'application/json' });
+  response.end(
+    JSON.stringify({
+      ok: true,
+      service: 'Aao Milo signaling server',
+      frontend: 'https://aao-milo.vercel.app',
+      endpoints: {
+        health: '/health',
+        config: '/config',
+        livekitToken: '/api/livekit-token',
+        websocket: 'wss://conference-app-tu4u.onrender.com',
+      },
+    }),
+  );
 });
 
 const wss = new WebSocketServer({ server });
