@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:signal": "node server/signaling-server.js",
+    "start": "node server/signaling-server.js",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint ."
